@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://qyyuc4h1duf6"]
+
+[ext_resource type="FontFile" uid="uid://bbxxduwxkg80c" path="res://Fonts/setofont.otf" id="1_6aixg"]
+[ext_resource type="Script" path="res://Scenes/end_scene.gd" id="1_fllyh"]
+[ext_resource type="AudioStream" uid="uid://bwsqf0n7vwski" path="res://SoundEffects/pop-39222.mp3" id="3_31rj3"]
+[ext_resource type="Texture2D" uid="uid://d4cl5ibfevl52" path="res://Images/Tako2.jpg" id="3_yidls"]
+
+[node name="EndScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fllyh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.694118, 0.4, 0.917647, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.269965
+anchor_top = 0.131173
+anchor_right = 1.0
+anchor_bottom = 0.304012
+theme_override_fonts/normal_font = ExtResource("1_6aixg")
+theme_override_font_sizes/normal_font_size = 84
+bbcode_enabled = true
+text = "[center]遊戲結束"
+metadata/_edit_use_anchors_ = true
+
+[node name="Takodachi" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.110243
+anchor_top = 0.302469
+anchor_right = 0.327257
+anchor_bottom = 0.688272
+texture = ExtResource("3_yidls")
+metadata/_edit_use_anchors_ = true
+
+[node name="Result" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.234375
+anchor_top = 0.41358
+anchor_right = 1.0
+anchor_bottom = 0.728395
+theme_override_fonts/normal_font = ExtResource("1_6aixg")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "[center]你總共吃了 n 塊餅乾
+
+[center] 最高紀錄 m 塊餅乾"
+metadata/_edit_use_anchors_ = true
+
+[node name="ReplayButton" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.274306
+anchor_top = 0.771605
+anchor_right = 0.47309
+anchor_bottom = 0.908951
+offset_left = 137.0
+offset_right = 137.0
+theme_override_fonts/font = ExtResource("1_6aixg")
+theme_override_font_sizes/font_size = 42
+text = "再玩一次"
+metadata/_edit_use_anchors_ = true
+
+[node name="HomePageButton" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.539063
+anchor_top = 0.771605
+anchor_right = 0.737847
+anchor_bottom = 0.908951
+offset_left = 137.0
+offset_right = 137.0
+theme_override_fonts/font = ExtResource("1_6aixg")
+theme_override_font_sizes/font_size = 42
+text = "回到首頁"
+metadata/_edit_use_anchors_ = true
+
+[node name="Pop" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource("3_31rj3")
+volume_db = -5.0
+
+[connection signal="pressed" from="CanvasLayer/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HomePageButton" to="." method="_on_home_page_button_pressed"]

@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://brg7pls15i21w"]
+
+[ext_resource type="Script" path="res://Scenes/game_scene.gd" id="1_5tfy3"]
+[ext_resource type="Texture2D" uid="uid://g3j57qy7aka0" path="res://Images/wood_cartoon_texture.jpg" id="1_dm5ip"]
+[ext_resource type="FontFile" uid="uid://bbxxduwxkg80c" path="res://Fonts/setofont.otf" id="3_pmul1"]
+[ext_resource type="PackedScene" uid="uid://b85fw85bwa2ls" path="res://Scenes/in_game_menu.tscn" id="5_w0qiv"]
+[ext_resource type="PackedScene" uid="uid://delaodnnl6s5q" path="res://Scenes/cookie.tscn" id="13_fg5ip"]
+
+[node name="GameScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5tfy3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Table" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dm5ip")
+metadata/_edit_use_anchors_ = true
+
+[node name="Cookie" parent="CanvasLayer" instance=ExtResource("13_fg5ip")]
+anchor_left = 0.404514
+anchor_top = 0.362654
+anchor_right = 0.621528
+anchor_bottom = 0.748457
+offset_left = -14.0
+offset_top = -13.0
+offset_right = -14.0
+offset_bottom = -13.0
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.0321181
+anchor_top = 0.0524691
+anchor_right = 0.220486
+anchor_bottom = 0.180556
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_pmul1")
+theme_override_font_sizes/font_size = 60
+text = "Score:"
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLeft" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.552951
+anchor_top = 0.0524691
+anchor_right = 0.741319
+anchor_bottom = 0.180556
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_pmul1")
+theme_override_font_sizes/font_size = 60
+text = "Time:"
+metadata/_edit_use_anchors_ = true
+
+[node name="Mask" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.682353)
+metadata/_edit_use_anchors_ = true
+
+[node name="TimerLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.345679
+anchor_right = 1.0
+anchor_bottom = 0.796296
+theme_override_fonts/normal_font = ExtResource("3_pmul1")
+theme_override_font_sizes/normal_font_size = 240
+bbcode_enabled = true
+text = "[center]3"
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+wait_time = 3.0
+one_shot = true
+
+[node name="CountDown" type="Timer" parent="CanvasLayer"]
+wait_time = 10.0
+
+[node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("5_w0qiv")]
+visible = false
+
+[connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/CountDown" to="." method="_on_count_down_timeout"]

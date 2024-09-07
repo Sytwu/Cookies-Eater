@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl0myympjvd0g"]
+
+[ext_resource type="Texture2D" uid="uid://qnwhm4a78iov" path="res://Images/Daily dose of Takodachi-0.jpg" id="1_cx3x0"]
+[ext_resource type="Script" path="res://Scenes/start_scene.gd" id="1_i338f"]
+[ext_resource type="Texture2D" uid="uid://dor1il5ani3tg" path="res://Images/Daily dose of Takodachi-1.jpg" id="2_ltcdc"]
+[ext_resource type="FontFile" uid="uid://bbxxduwxkg80c" path="res://Fonts/setofont.otf" id="3_kdwfd"]
+[ext_resource type="AudioStream" uid="uid://bwsqf0n7vwski" path="res://SoundEffects/pop-39222.mp3" id="5_g71va"]
+
+[node name="StartScene" type="Node2D"]
+script = ExtResource("1_i338f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BackGround1" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cx3x0")
+metadata/_edit_use_anchors_ = true
+
+[node name="BackGround2" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = -0.111111
+anchor_top = -0.111111
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ltcdc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.0462963
+anchor_right = 1.0
+anchor_bottom = 0.182099
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_kdwfd")
+theme_override_font_sizes/normal_font_size = 84
+bbcode_enabled = true
+text = "[center]Cookie Eater"
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.15625
+anchor_top = 0.231481
+anchor_right = 0.434028
+anchor_bottom = 0.385802
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_kdwfd")
+theme_override_font_sizes/font_size = 42
+text = "開始遊戲"
+metadata/_edit_use_anchors_ = true
+
+[node name="StuffButton" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.15625
+anchor_top = 0.435185
+anchor_right = 0.434028
+anchor_bottom = 0.592592
+offset_right = -0.000305176
+offset_bottom = -1.99976
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_kdwfd")
+theme_override_font_sizes/font_size = 42
+text = "工作人員名單"
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.154514
+anchor_top = 0.611111
+anchor_right = 0.432292
+anchor_bottom = 0.768519
+offset_left = 1.99988
+offset_top = 17.9998
+offset_right = 1.9996
+offset_bottom = 15.9994
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_kdwfd")
+theme_override_font_sizes/font_size = 42
+text = "離開遊戲"
+metadata/_edit_use_anchors_ = true
+
+[node name="Pop" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource("5_g71va")
+volume_db = -5.0
+
+[connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StuffButton" to="." method="_on_stuff_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_pressed"]

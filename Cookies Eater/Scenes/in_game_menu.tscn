@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://b85fw85bwa2ls"]
+
+[ext_resource type="Script" path="res://Scenes/in_game_menu.gd" id="1_gwcjy"]
+[ext_resource type="FontFile" uid="uid://bbxxduwxkg80c" path="res://Fonts/setofont.otf" id="1_msf4c"]
+[ext_resource type="AudioStream" uid="uid://bwsqf0n7vwski" path="res://SoundEffects/pop-39222.mp3" id="3_pt52w"]
+
+[node name="InGameMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gwcjy")
+
+[node name="ColorRect1" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.517647)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0685764
+anchor_top = 0.0949074
+anchor_right = 0.931424
+anchor_bottom = 0.905093
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.576471, 0.576471, 0.517647)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.363715
+anchor_top = 0.16821
+anchor_right = 0.636285
+anchor_bottom = 0.864198
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_msf4c")
+theme_override_font_sizes/font_size = 56
+text = "遊戲選單"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+visibility_layer = 0
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_msf4c")
+theme_override_font_sizes/font_size = 56
+text = "繼續遊戲"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+visibility_layer = 0
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_msf4c")
+theme_override_font_sizes/font_size = 56
+text = "離開遊戲"
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+visibility_layer = 0
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SettingButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_msf4c")
+theme_override_font_sizes/font_size = 56
+text = "遊戲設定"
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+visibility_layer = 0
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HomePageButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_msf4c")
+theme_override_font_sizes/font_size = 56
+text = "回到首頁"
+
+[node name="Pop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pt52w")
+volume_db = -5.0
+
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HomePageButton" to="." method="_on_home_page_button_pressed"]

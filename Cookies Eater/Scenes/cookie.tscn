@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://delaodnnl6s5q"]
+
+[ext_resource type="Texture2D" uid="uid://c0qcu4p8t3om6" path="res://Images/cookie_imgs/cookie_250.png" id="1_a0qeu"]
+[ext_resource type="Script" path="res://Scenes/cookie.gd" id="2_07phh"]
+[ext_resource type="AudioStream" uid="uid://dr7t14hma0byo" path="res://SoundEffects/munching-food-73994.mp3" id="3_rit8p"]
+
+[node name="Cookie" type="TextureButton"]
+anchors_preset = -1
+anchor_right = 0.217014
+anchor_bottom = 0.385802
+texture_normal = ExtResource("1_a0qeu")
+script = ExtResource("2_07phh")
+metadata/_edit_use_anchors_ = true
+
+[node name="EatCookies" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rit8p")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
